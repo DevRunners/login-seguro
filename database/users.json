@@ -1,0 +1,48 @@
+{
+    "users": [
+        {
+            "id": "1cca0253-7aa9-4ba2-afed-2d3a0645e524",
+            "temp_secret": {
+                "ascii": "#b6(?iEy*Bv4[iRQ*Bw8CRp2IR(qv8s0",
+                "hex": "236236283f6945792a4276345b6952512a427738435270324952287176387330",
+                "base32": "ENRDMKB7NFCXSKSCOY2FW2KSKEVEE5ZYINJHAMSJKIUHC5RYOMYA",
+                "otpauth_url": "otpauth://totp/SecretKey?secret=ENRDMKB7NFCXSKSCOY2FW2KSKEVEE5ZYINJHAMSJKIUHC5RYOMYA"
+            },
+            "username": "Akira",
+            "password": "Toriyama"
+        },
+        {
+            "id": "36fac449-47d9-4f8d-85a3-1d34ce402fe2",
+            "temp_secret": {
+                "ascii": "*JRiwT3)0FI}Lv#Z47hG!40IZQ8]%a21",
+                "hex": "2a4a5269775433293046497d4c76235a34376847213430495a51385d25613231",
+                "base32": "FJFFE2LXKQZSSMCGJF6UY5RDLI2DO2CHEE2DASK2KE4F2JLBGIYQ",
+                "otpauth_url": "otpauth://totp/SecretKey?secret=FJFFE2LXKQZSSMCGJF6UY5RDLI2DO2CHEE2DASK2KE4F2JLBGIYQ"
+            },
+            "username": "Pedro",
+            "password": "fedro"
+        },
+        {
+            "id": "09f6046d-6c5c-4f89-a778-19817fd5c17b",
+            "temp_secret": {
+                "ascii": "Ff5oHg$7r3*N$xw3716e]ch&VQ?*4FIn",
+                "hex": "4666356f4867243772332a4e24787733373136655d63682656513f2a3446496e",
+                "base32": "IZTDK32IM4SDO4RTFJHCI6DXGM3TCNTFLVRWQJSWKE7SUNCGJFXA",
+                "otpauth_url": "otpauth://totp/SecretKey?secret=IZTDK32IM4SDO4RTFJHCI6DXGM3TCNTFLVRWQJSWKE7SUNCGJFXA"
+            },
+            "username": "Julio",
+            "password": "tulio"
+        },
+        {
+            "id": "f626f75d-9ba3-47df-9780-4ba3042fd7dc",
+            "temp_secret": {
+                "ascii": "K^?8tI7bgZz63xPiVTQOW!WKN!r$&$T{",
+                "hex": "4b5e3f3874493762675a7a36337850695654514f5721574b4e2172242624547b",
+                "base32": "JNPD6ODUJE3WEZ22PI3DG6CQNFLFIUKPK4QVOS2OEFZCIJREKR5Q",
+                "otpauth_url": "otpauth://totp/SecretKey?secret=JNPD6ODUJE3WEZ22PI3DG6CQNFLFIUKPK4QVOS2OEFZCIJREKR5Q"
+            },
+            "username": "Carlos",
+            "password": "zamora"
+        }
+    ]
+}
