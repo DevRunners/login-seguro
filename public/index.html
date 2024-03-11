@@ -12,18 +12,21 @@
   <body>
     <h1>LOGIN</h1>
     <form id="loginForm">
-      <label for="username">Username</label>
-      <input type="text" id="username" required />
-      <br>
-      <label for="password">Constraseña</label>
-      <input type="password" id="password" required />
-      <br>
+      <div class="inputs-form"> 
+        <label for="username">Username</label>
+        <input type="text" id="username" required />
+      </div>
+
+      <div class="inputs-form">
+        <label for="password">Constraseña</label>
+        <input type="password" id="password" required />
+      </div>
+      
       <button type="button" id="login">Iniciar Sesión</button>
     </form>
+    <!--<div id="userVerify"></div>
     <hr>
-    <div id="userVerify"></div>
-    <hr>
-    <div id="result"></div>
+    <div id="result"></div> -->
     <script src="https://www.google.com/recaptcha/api.js?render=
     6LdUlJIpAAAAAAWndAig2IIRrjEt7MzGXmw4WPcp"></script>
     <script src="./js/recaptcha.js"></script>
