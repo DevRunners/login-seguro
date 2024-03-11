@@ -1,0 +1,47 @@
+:root{
+    --color-body: #FFB3C1;
+    --color-title-button: #A4133C;
+    --color-text: #590D22;
+    --color-input:  #590D2280;
+    --color-button-text: #F2F8FF;
+    --color-div: #FFFFF9; 
+    
+}
+
+@font-face {
+    font-family: 'Fredoka';
+    src: url('./fonts/title/Fredoka-VariableFont_wdth\,wght.ttf') format('truetype');
+    font-weight: 700;
+    font-style: bolder;
+}
+
+@font-face {
+    font-family: 'Fira Sans';
+    src: url('./fonts/body/FiraSans-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+*{
+    margin:0;
+    padding: 0;
+}
+
+body{
+    background-color: #FFB3C1;     
+}
+
+h1{
+    font-family: 'Fredoka', sans-serif;
+    font-size: 2.5em;
+    font-weight: 700;
+    color: var(--color-title-button); 
+}
+
+label{
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 15px;
+    color: var(--color-text);
+}
+
+
