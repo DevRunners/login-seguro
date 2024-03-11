@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TOTP</title>
+</head>
+
+<body>
+  <h1>Doble factor de autenticación</h1>
+  <div id="qrcode" style="display: none;"></div>
+  <button id="showQR">Vincular aplicación de autenticación</button>
+  <form>
+    <label for="otp">Introduzca su código</label> <br>
+    <input type="text" id="otp" required />
+    <br>
+    <button type="button" id="verifyOTP">Verificar</button>
+  </form>
+  <script src="./js/mfa.js"></script>
+</body>
+
+</html>

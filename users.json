@@ -1,0 +1,37 @@
+{
+    "user": {
+        "Akira": {
+            "id": "31948138-b7fb-48f7-a708-383e6621b543",
+            "password": "Toriyama",
+            "username": "Akira",
+            "secret": {
+                "ascii": "?<k,c3}#tpIiStk{SE}5T*;fO8>D5Vx1",
+                "hex": "3f3c6b2c63337d237470496953746b7b53457d35542a3b664f383e4435567831",
+                "base32": "H46GWLDDGN6SG5DQJFUVG5DLPNJUK7JVKQVDWZSPHA7EINKWPAYQ",
+                "otpauth_url": "otpauth://totp/SecretKey?secret=H46GWLDDGN6SG5DQJFUVG5DLPNJUK7JVKQVDWZSPHA7EINKWPAYQ"
+            }
+        },
+        "Pedro": {
+            "id": "f26986a2-9b9b-4acf-930b-d880e94f0ae6",
+            "password": "fedro",
+            "username": "Pedro",
+            "secret": {
+                "ascii": "[m9nTZ[Pk>@%6iLJ*UMOMZuHtRt5q!bK",
+                "hex": "5b6d396e545a5b506b3e402536694c4a2a554d4f4d5a7548745274357121624b",
+                "base32": "LNWTS3SULJNVA2Z6IASTM2KMJIVFKTKPJVNHKSDUKJ2DK4JBMJFQ",
+                "otpauth_url": "otpauth://totp/SecretKey?secret=LNWTS3SULJNVA2Z6IASTM2KMJIVFKTKPJVNHKSDUKJ2DK4JBMJFQ"
+            }
+        },
+        "Julio": {
+            "id": "35b1f55e-8fbd-4020-bae0-4a80bc832eee",
+            "password": "tulio",
+            "username": "Julio",
+            "secret": {
+                "ascii": "Ngw9DsbkB&;dQ%OptI&hzA&0Ix:DIH{m",
+                "hex": "4e6777394473626b42263b6451254f70744926687a41263049783a4449487b6d",
+                "base32": "JZTXOOKEONRGWQRGHNSFCJKPOB2ESJTIPJASMMCJPA5EISKIPNWQ",
+                "otpauth_url": "otpauth://totp/SecretKey?secret=JZTXOOKEONRGWQRGHNSFCJKPOB2ESJTIPJASMMCJPA5EISKIPNWQ"
+            }
+        }
+    }
+}
