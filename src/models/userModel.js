@@ -31,8 +31,8 @@ async function updateUser(username, updatedData) {
 
   userData = filterProperties(updatedData, verifiedUserProps)
 
-  const index = await db.getIndex('/users', 'username', userData.username)
-  await db.push('/users[' + index + ']')
+  const index = await db.getIndex('/users', username, 'username')
+  await db.push('/users[' + index + ']', userData)
   return userData
 }
 

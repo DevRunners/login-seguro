@@ -10,13 +10,17 @@
 <body>
   <h1>Doble factor de autenticación</h1>
   <div id="qrcode" style="display: none;"></div>
-  <button id="showQR">Vincular aplicación de autenticación</button>
-  <form>
+  <div id="unverifiedButtons" style="display: none;">
+    <button id="showQR">Vincular aplicación de autenticación (Recomendado)</button>
+    <button id="continue">Continuar</button>
+  </div>
+  <form id="otpForm">
     <label for="otp">Introduzca su código</label> <br>
-    <input type="text" id="otp" required />
+    <input type="number" id="otp" required />
     <br>
-    <button type="button" id="verifyOTP">Verificar</button>
+    <button type="submit" id="verifyOTP">Verificar</button>
   </form>
+  <span id="result"></span>
   <script src="./js/mfa.js"></script>
 </body>
 

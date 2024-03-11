@@ -26,7 +26,7 @@ async function verifyUser(req, res) {
     }
 
     if (user.password === password) {
-      res.json({ message: 'verified', url: user.secret?.otpauth_url || user.temp_secret.otpauth_url, username: user.username })
+      res.json({ message: 'verified', username: user.username })
     } else {
       res.json({ message: 'not verified' })
     }

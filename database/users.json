@@ -13,14 +13,14 @@
         },
         {
             "id": "36fac449-47d9-4f8d-85a3-1d34ce402fe2",
-            "temp_secret": {
+            "username": "Pedro",
+            "password": "fedro",
+            "secret": {
                 "ascii": "*JRiwT3)0FI}Lv#Z47hG!40IZQ8]%a21",
                 "hex": "2a4a5269775433293046497d4c76235a34376847213430495a51385d25613231",
                 "base32": "FJFFE2LXKQZSSMCGJF6UY5RDLI2DO2CHEE2DASK2KE4F2JLBGIYQ",
                 "otpauth_url": "otpauth://totp/SecretKey?secret=FJFFE2LXKQZSSMCGJF6UY5RDLI2DO2CHEE2DASK2KE4F2JLBGIYQ"
-            },
-            "username": "Pedro",
-            "password": "fedro"
+            }
         },
         {
             "id": "09f6046d-6c5c-4f89-a778-19817fd5c17b",
@@ -32,17 +32,6 @@
             },
             "username": "Julio",
             "password": "tulio"
-        },
-        {
-            "id": "f626f75d-9ba3-47df-9780-4ba3042fd7dc",
-            "temp_secret": {
-                "ascii": "K^?8tI7bgZz63xPiVTQOW!WKN!r$&$T{",
-                "hex": "4b5e3f3874493762675a7a36337850695654514f5721574b4e2172242624547b",
-                "base32": "JNPD6ODUJE3WEZ22PI3DG6CQNFLFIUKPK4QVOS2OEFZCIJREKR5Q",
-                "otpauth_url": "otpauth://totp/SecretKey?secret=JNPD6ODUJE3WEZ22PI3DG6CQNFLFIUKPK4QVOS2OEFZCIJREKR5Q"
-            },
-            "username": "Carlos",
-            "password": "zamora"
         }
     ]
 }

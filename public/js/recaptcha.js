@@ -35,9 +35,10 @@ function handleSubmit(evt, token) {
       } else {
         showResultReCaptcha('ReCaptcha failed')
       }
+
+      handleRecaptchaExecute()
     })
     .catch(err => showResultReCaptcha(err))
-    .finally(() => handleRecaptchaExecute())
 }
 
 function verifyUser(data) {
@@ -51,11 +52,11 @@ function verifyUser(data) {
   })
     .then(response => response.json())
     .then(jsonData => {
-      const { message, url, username } = jsonData
+      const { message, username } = jsonData
 
       if (message === 'verified') {
         resetForm()
-        window.location.href = `/verification.html?qrURL=${url}&username=${username}`
+        window.location.href = `/verification.html?username=${username}`
       } else {
         alert('User not verified')
         window.location.reload()
