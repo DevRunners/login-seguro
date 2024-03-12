@@ -69,7 +69,7 @@ grecaptcha.ready(() => {
   handleRecaptchaExecute()
 })
 
-function handleRecaptchaExecute(token) {
+function handleRecaptchaExecute() {
   grecaptcha.execute('6LdUlJIpAAAAAAWndAig2IIRrjEt7MzGXmw4WPcp', { action: 'verifyUser' })
     .then(token => {
       const loginForm = document.getElementById('loginForm')
