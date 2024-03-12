@@ -8,24 +8,22 @@
     <link rel="stylesheet" href="styles/normalize.css">
     <title>reCAPTCHA v3</title>
   </head>
-
-  <body>
-    <h1>LOGIN</h1>
-    <form id="loginForm">
-      <label for="username">Username</label>
-      <input type="text" id="username" required />
-      <br>
-      <label for="password">Constraseña</label>
-      <input type="password" id="password" required />
-      <br>
-      <button type="button" id="login">Iniciar Sesión</button>
-    </form>
-    <hr>
-    <div id="userVerify"></div>
-    <hr>
-    <div id="result"></div>
-    <script src="https://www.google.com/recaptcha/api.js?render=
-    6LdUlJIpAAAAAAWndAig2IIRrjEt7MzGXmw4WPcp"></script>
-    <script src="./js/recaptcha.js"></script>
-  </body>
+<body>
+  <h1>LOGIN</h1>
+  <form id="loginForm">
+    <label for="username">Username</label>
+    <input type="text" id="username" required />
+    <br>
+    <label for="password">Constraseña</label>
+    <input type="password" id="password" required />
+    <br>
+    <button type="submit" id="login">Iniciar Sesión</button>
+  </form>
+  <hr>
+  <div id="userVerify"></div>
+  <hr>
+  <div id="result"></div>
+  <script src="https://www.google.com/recaptcha/api.js?render=6LdUlJIpAAAAAAWndAig2IIRrjEt7MzGXmw4WPcp"></script>
+  <script src="./js/recaptcha.js"></script>
+</body>
 </html>

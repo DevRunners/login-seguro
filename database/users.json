@@ -1,0 +1,37 @@
+{
+    "users": [
+        {
+            "id": "1cca0253-7aa9-4ba2-afed-2d3a0645e524",
+            "temp_secret": {
+                "ascii": "#b6(?iEy*Bv4[iRQ*Bw8CRp2IR(qv8s0",
+                "hex": "236236283f6945792a4276345b6952512a427738435270324952287176387330",
+                "base32": "ENRDMKB7NFCXSKSCOY2FW2KSKEVEE5ZYINJHAMSJKIUHC5RYOMYA",
+                "otpauth_url": "otpauth://totp/SecretKey?secret=ENRDMKB7NFCXSKSCOY2FW2KSKEVEE5ZYINJHAMSJKIUHC5RYOMYA"
+            },
+            "username": "Akira",
+            "password": "Toriyama"
+        },
+        {
+            "id": "36fac449-47d9-4f8d-85a3-1d34ce402fe2",
+            "username": "Pedro",
+            "password": "fedro",
+            "secret": {
+                "ascii": "*JRiwT3)0FI}Lv#Z47hG!40IZQ8]%a21",
+                "hex": "2a4a5269775433293046497d4c76235a34376847213430495a51385d25613231",
+                "base32": "FJFFE2LXKQZSSMCGJF6UY5RDLI2DO2CHEE2DASK2KE4F2JLBGIYQ",
+                "otpauth_url": "otpauth://totp/SecretKey?secret=FJFFE2LXKQZSSMCGJF6UY5RDLI2DO2CHEE2DASK2KE4F2JLBGIYQ"
+            }
+        },
+        {
+            "id": "09f6046d-6c5c-4f89-a778-19817fd5c17b",
+            "temp_secret": {
+                "ascii": "Ff5oHg$7r3*N$xw3716e]ch&VQ?*4FIn",
+                "hex": "4666356f4867243772332a4e24787733373136655d63682656513f2a3446496e",
+                "base32": "IZTDK32IM4SDO4RTFJHCI6DXGM3TCNTFLVRWQJSWKE7SUNCGJFXA",
+                "otpauth_url": "otpauth://totp/SecretKey?secret=IZTDK32IM4SDO4RTFJHCI6DXGM3TCNTFLVRWQJSWKE7SUNCGJFXA"
+            },
+            "username": "Julio",
+            "password": "tulio"
+        }
+    ]
+}

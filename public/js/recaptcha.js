@@ -1,69 +1,78 @@
 function showResultReCaptcha(text) {
-  document.querySelector('#result').innerHTML = text
+  document.getElementById('result').innerHTML = text
 }
 
 function showResultUserVerify(text) {
-  document.querySelector('#userVerify').innerHTML = text
+  document.getElementById('userVerify').innerHTML = text
 }
 
 function resetForm() {
-  document.querySelector('#loginForm').reset()
+  document.getElementById('loginForm').reset()
 }
 
-function handleClick(token) {
-  return function () {
-    let username = document.querySelector('#username').value
-    let password = document.querySelector('#password').value
-    let data = {
-      username: username,
-      password: password,
-      token: token
-    }
+function handleSubmit(evt, token) {
+  evt.preventDefault()
 
-    fetch('/api/send', {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: 'post',
-      body: JSON.stringify(data)
+  const username = document.getElementById('username').value
+  const password = document.getElementById('password').value
+  const data = { username, password, token }
+
+  fetch('/api/send', {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    method: 'post',
+    body: JSON.stringify(data)
+  })
+    .then(response => response.json())
+    .then(jsonData => {
+      const { success } = jsonData
+
+      if (success) {
+        showResultReCaptcha('ReCaptcha was successful')
+        verifyUser(data)
+      } else {
+        showResultReCaptcha('ReCaptcha failed')
+      }
+
+      handleRecaptchaExecute()
     })
-      .then(response => response.json())
-      .then(respone => {
-        const { success, challenge_ts } = respone.google_response
-        if (success && (new Date() - new Date(challenge_ts)) < 120000) {
-          showResultReCaptcha('ReCaptcha was successful')
-          fetch('/api/verifyUser', {
-            method: 'post',
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-          })
-            .then(response => response.json())
-            .then(response => {
-              if (response.message === 'verified') {
-                console.log('User verified')
-                resetForm()
-                window.location.href = `/verification.html?qrURL=${response.url}&username=${response.username}`
-              } else {
-                alert('User not verified')
-                window.location.reload()
-              }
-            })
-            .catch(error => showResultUserVerify(error))
-        } else {
-          showResultReCaptcha('ReCaptcha failed')
-        }
-      })
-      .catch(error => showResultReCaptcha(error))
-  }
+    .catch(err => showResultReCaptcha(err))
 }
 
-grecaptcha.ready(function () {
-  grecaptcha.execute('6LdUlJIpAAAAAAWndAig2IIRrjEt7MzGXmw4WPcp', { action: 'verifyUser' })
-    .then(function (token) {
-      document.querySelector('#login').addEventListener('click', handleClick(token))
+function verifyUser(data) {
+  fetch('/api/verifyUser', {
+    method: 'post',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+    .then(response => response.json())
+    .then(jsonData => {
+      const { message, username } = jsonData
+
+      if (message === 'verified') {
+        resetForm()
+        window.location.href = `/verification.html?username=${username}`
+      } else {
+        alert('User not verified')
+        window.location.reload()
+      }
     })
+    .catch(error => showResultUserVerify(error))
+}
+
+grecaptcha.ready(() => {
+  handleRecaptchaExecute()
 })
+
+function handleRecaptchaExecute(token) {
+  grecaptcha.execute('6LdUlJIpAAAAAAWndAig2IIRrjEt7MzGXmw4WPcp', { action: 'verifyUser' })
+    .then(token => {
+      const loginForm = document.getElementById('loginForm')
+      loginForm.addEventListener('submit', evt => handleSubmit(evt, token), { once: true })
+    })
+}

@@ -1,6 +1,6 @@
-require('dotenv').config()
 const express = require('express')
-const { JsonDB, Config } = require('node-json-db')
+require('dotenv').config()
+
 const mfaRoute = require('./src/routes/mfaRoute')
 const recaptchaRoute = require('./src/routes/recaptchaRoute')
 
