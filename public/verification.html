@@ -12,13 +12,15 @@
   <h1 class="principal-title verification-title">Doble factor de autenticación</h1>
   <div id="qrcode" class="qr-code" style="display: none;"></div>
   <button id="showQR" class="show-qr">Vincular aplicación de autenticación</button>
-  <form>
-    <div class="inputs-form">
-      <label for="otp">Introduzca su código</label> <br>
-      <input type="text" id="otp" required />
-    </div>
-    <button type="button" id="verifyOTP">Verificar</button>
-  </form>
+  <div class="form-auth">
+    <form>
+      <div class="inputs-form">
+        <label for="otp">Introduzca su código</label> <br>
+        <input type="text" id="otp" required />
+      </div>
+      <button type="button" id="verifyOTP">Verificar</button>
+    </form>
+  </div>
   <script src="./js/mfa.js"></script>
   </body>
 </html>
