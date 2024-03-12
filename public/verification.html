@@ -7,21 +7,19 @@
   <link rel="stylesheet" href="styles/normalize.css">
   <title>TOTP</title>
   </head>
-
   <body>
-  <h1>Doble factor de autenticación</h1>
-  <div id="qrcode" style="display: none;"></div>
-  <div id="unverifiedButtons" style="display: none;">
-    <button id="showQR">Vincular aplicación de autenticación (Recomendado)</button>
-    <button id="continue">Continuar</button>
+  <h1 class="principal-title verification-title">Doble factor de autenticación</h1>
+  <div id="qrcode" class="qr-code" style="display: none;"></div>
+  <button id="showQR" class="show-qr">Vincular aplicación de autenticación</button>
+  <div class="form-auth">
+    <form>
+      <div class="inputs-form">
+        <label for="otp">Introduzca su código</label> <br>
+        <input type="text" id="otp" required />
+      </div>
+      <button type="button" id="verifyOTP">Verificar</button>
+    </form>
   </div>
-  <form id="otpForm">
-    <label for="otp">Introduzca su código</label> <br>
-    <input type="number" id="otp" required />
-    <br>
-    <button type="submit" id="verifyOTP">Verificar</button>
-  </form>
-  <span id="result"></span>
   <script src="./js/mfa.js"></script>
   </body>
 </html>
