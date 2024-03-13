@@ -2,14 +2,14 @@
     "users": [
         {
             "id": "f888dc73-14bd-4301-8ee1-1dbfa215bf27",
-            "temp_secret": {
+            "username": "Pedro",
+            "password": "fedro",
+            "secret": {
                 "ascii": "WZMZ924u*3:z7}Xc}UFmi9a&R!/[]]8I",
                 "hex": "575a4d5a393234752a333a7a377d58637d55466d6939612652212f5b5d5d3849",
                 "base32": "K5NE2WRZGI2HKKRTHJ5DO7KYMN6VKRTNNE4WCJSSEEXVWXK5HBEQ",
                 "otpauth_url": "otpauth://totp/SecretKey?secret=K5NE2WRZGI2HKKRTHJ5DO7KYMN6VKRTNNE4WCJSSEEXVWXK5HBEQ"
-            },
-            "username": "Pedro",
-            "password": "fedro"
+            }
         },
         {
             "id": "32ac7923-9575-4b6f-9b16-a988b1aea808",
