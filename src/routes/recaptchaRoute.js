@@ -5,5 +5,6 @@ const router = express.Router()
 
 router.post('/verifyUser', verifyUser)
 router.post('/send', handleSend)
+//router.get('/publicKey', sendPublicKey)
 
 module.exports = router

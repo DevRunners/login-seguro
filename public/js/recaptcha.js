@@ -10,11 +10,16 @@ function resetForm() {
   document.getElementById('loginForm').reset()
 }
 
-function handleSubmit(evt, token) {
+async function handleSubmit(evt, token) {
   evt.preventDefault()
+
+  //const publicKey = (await fetch('/api/publicKey')).json().publicKey
 
   const username = document.getElementById('username').value
   const password = document.getElementById('password').value
+
+  //const passwordHash = jsrsasign.crypto.Cipher.encrypt(password, publicKey)
+
   const data = { username, password, token }
 
   fetch('/api/send', {
@@ -56,6 +61,7 @@ function verifyUser(data) {
 
       if (message === 'verified') {
         resetForm()
+        alert('User verified')
         window.location.href = `/verification.html?username=${username}`
       } else {
         alert('User not verified')

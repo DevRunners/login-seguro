@@ -1,9 +1,7 @@
 main()
 
 async function main() {
-  const isVerified = await isUserVerified();
-
-  console.log(isVerified)
+  const isVerified = await isUserVerified()
 
   const otpForm = document.getElementById('otpForm')
   const unverifiedButtons = document.getElementById('unverifiedButtons')
@@ -124,5 +122,15 @@ async function displayQRCode() {
 }
 
 function success() {
-  window.location.href = '/home.html'
+  const urlParams = new URLSearchParams(window.location.search)
+  const username = urlParams.get('username')
+  fetch('/api/changeSession', {
+    method: 'post',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ username })
+  })
+  window.location.href = '/home.html?username=' + username
 }
