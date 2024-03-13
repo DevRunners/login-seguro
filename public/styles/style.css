@@ -175,7 +175,14 @@ form{
 }
 
 .info-home{
+	display: flex;
+	justify-content: center;
 	text-align: center;
+	height: 400px;
+}
+
+.info-home h1{
+	font-size : 38px;
 }
 
 
