@@ -107,7 +107,6 @@ function verifyUser(data) {
 
       if (message === 'verified') {
         resetForm()
-        alert('User has been verified')
         window.location.href = `/verification.html?username=${username}`
       } else {
         window.location.reload()
