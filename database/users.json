@@ -26,15 +26,9 @@
         },
         {
             "id": "f0d6672b-9615-4fdb-9aa9-8c9ee1758f98",
-            "temp_secret": {
-                "ascii": "M9OHiOQ9ZH>)]ZM6)J:rbvI)Sw8tBR}%",
-                "hex": "4d394f48694f51395a483e295d5a4d36294a3a72627649295377387442527d25",
-                "base32": "JU4U6SDJJ5ITSWSIHYUV2WSNGYUUUOTSMJ3ESKKTO44HIQSSPUSQ",
-                "otpauth_url": "otpauth://totp/SecretKey?secret=JU4U6SDJJ5ITSWSIHYUV2WSNGYUUUOTSMJ3ESKKTO44HIQSSPUSQ"
-            },
             "username": "Julio",
             "password": "$2b$10$jdaYbzyNXXWhos8HM0WDo.BfzPFNBUupYr.N02z3p1imLLE5SVL8W",
-            "session": false
+            "session": true
         }
     ]
 }

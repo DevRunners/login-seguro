@@ -1,3 +1,45 @@
+bufferFrom = ethereumjs.Buffer.Buffer.from
+
+let importedPublicKey
+
+fetch('/api/publicKey')
+  .then(response => response.json())
+  .then(async jsonData => {
+    const { publicKey } = jsonData
+    importedPublicKey = await importPublicCrytoKey(publicKey)
+  })
+  .catch(err => console.error(err))
+
+async function importPublicCrytoKey(publicKey) {
+  const publicKeyBase64String = bufferFrom(publicKey).toString('ascii');
+  console.log(publicKeyBase64String)
+  const publicKeyBuffer = bufferFrom(publicKeyBase64String, 'base64');
+  const publicCryptoKey = await crypto.subtle.importKey(
+    'spki',
+    publicKeyBuffer,
+    { name: 'RSA-OAEP', hash: "SHA-512" },
+    false,
+    ["encrypt"]
+  )
+  return publicCryptoKey
+}
+
+async function encryptPassowrd(publicCryptoKey, password) {
+  try {
+    const plainTextUInt8 = (new TextEncoder()).encode(password);
+    const cypherTextBuffer = await crypto.subtle.encrypt(
+      { name: "RSA-OAEP", hash: "SHA-512" },
+      publicCryptoKey,
+      plainTextUInt8
+    )
+    const cypherTextBase64 = bufferFrom(cypherTextBuffer).toString('base64');
+    console.log(cypherTextBase64)
+    return cypherTextBase64
+  } catch (error) {
+    return null
+  }
+}
+
 function showResultReCaptcha(text) {
   document.getElementById('result').innerHTML = text
 }
@@ -13,14 +55,16 @@ function resetForm() {
 async function handleSubmit(evt, token) {
   evt.preventDefault()
 
-  //const publicKey = (await fetch('/api/publicKey')).json().publicKey
-
   const username = document.getElementById('username').value
   const password = document.getElementById('password').value
+  const passwordEncrypted = await encryptPassowrd(importedPublicKey, password)
 
-  //const passwordHash = jsrsasign.crypto.Cipher.encrypt(password, publicKey)
+  if (passwordEncrypted === null) {
+    alert('Error encrypting password')
+    return
+  }
 
-  const data = { username, password, token }
+  const data = { username, password: passwordEncrypted, token }
 
   fetch('/api/send', {
     headers: {

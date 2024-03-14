@@ -3,6 +3,9 @@ require('dotenv').config()
 
 const mfaRoute = require('./src/routes/mfaRoute')
 const recaptchaRoute = require('./src/routes/recaptchaRoute')
+const { setEnvVariables } = require('./src/encrypt')
+
+setEnvVariables()
 
 const app = express()
 const port = process.env.PORT || 3000

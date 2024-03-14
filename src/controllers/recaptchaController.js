@@ -1,7 +1,7 @@
 const fetch = require('isomorphic-fetch')
 const bcrypt = require('bcrypt')
-//const jsrsasign = require('jsrsasign')
 const { getUser } = require('../models/userModel')
+const { decryptedPassword } = require('../encrypt')
 
 async function handleSend(req, res) {
   const SECRET_KEY = process.env.SECRET_KEY
@@ -17,33 +17,17 @@ async function handleSend(req, res) {
   }
 }
 
-/*function generateRSAKeyPair() {
-  const { prvKeyObj, pubKeyObj } = jsrsasign.KEYUTIL.generateKeypair('RSA', 2048)
-  const privateKey = jsrsasign.KEYUTIL.getPEM(prvKeyObj, 'PKCS1PRV')
-  const publicKey = jsrsasign.KEYUTIL.getPEM(pubKeyObj, 'PKCS8PUB')
-
-  return { privateKey, publicKey }
-}
-
-const { privateKey, publicKey } = generateRSAKeyPair()
-process.env.PUBLIC_KEY = publicKey
-process.env.PRIVATE_KEY = privateKey
-
-const a = jsrsasign.KEYUTIL.getKey(process.env.PUBLIC_KEY)
-
-function sendPublicKey(req, res) {
-  const publicKey = jsrsasign.KEYUTIL.getKey(process.env.PUBLIC_KEY)
-  res.status(200).json({ publicKey })
-}*/
-
 async function verifyUser(req, res) {
   const { username, password } = req.body
-  //const passwordCrypt = jsrsasign.crypto.Cipher.encrypt(passwordHash, process.env.PUBLIC_KEY)
-  //const password = jsrsasign.crypto.Cipher.decrypt(passwordHash, process.env.PRIVATE_KEY)
+
+  console.log(password)
+
+  let plainTextPassword = await decryptedPassword(password)
+  console.log(plainTextPassword)
 
   try {
     const user = await getUser(username)
-    const match = await bcrypt.compare(password, user.password)
+    const match = await bcrypt.compare(plainTextPassword, user.password)
     if (match) {
       res.status(200).json({ message: 'verified', username: user.username })
     } else {
@@ -54,7 +38,12 @@ async function verifyUser(req, res) {
   }
 }
 
+async function sendPublicKey(req, res) {
+  res.status(200).json({ publicKey: process.env.PUBLIC_KEY })
+}
+
 module.exports = {
   handleSend,
   verifyUser,
+  sendPublicKey
 }
