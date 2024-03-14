@@ -1,189 +1,199 @@
-:root{
-	--color-body: #FFB3C1;
-	--color-title-button: #A4133C;
-	--color-text: #590D22;
-	--color-input: #494C4F80;
-	--color-border-input: #A4133C;
-	--color-input-text:  #590D2280;
-	--color-button-text: #F2F8FF;
-	--color-form-div: #FFFFF9; 
+:root {
+  --color-body: #FFB3C1;
+  --color-title-button: #A4133C;
+  --color-text: #590D22;
+  --color-input: #494C4F80;
+  --color-border-input: #A4133C;
+  --color-input-text: #590D2280;
+  --color-button-text: #F2F8FF;
+  --color-form-div: #FFFFF9;
 }
 
 @font-face {
-	font-family: 'Fredoka';
-	src: url('./fonts/title/Fredoka-VariableFont_wdth\,wght.ttf') format('truetype');
-	font-weight: 700;
-	font-style: bolder;
+  font-family: 'Fredoka';
+  src: url('./fonts/title/Fredoka-VariableFont_wdth\,wght.ttf') format('truetype');
+  font-weight: 700;
+  font-style: bolder;
 }
 
 @font-face {
-	font-family: 'Fira Sans';
-	src: url('./fonts/body/FiraSans-Regular.ttf') format('truetype');
-	font-weight: 400;
-	font-style: normal;
+  font-family: 'Fira Sans';
+  src: url('./fonts/body/FiraSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
 }
 
-body{
-	background-color: #FFB3C1;
-	width: 100%;
-	height: 100vh; 
-	
+body {
+  background-color: #FFB3C1;
+  width: 100%;
+  height: 100vh;
+
 }
 
-main{
-	width: 100%;
-	height:100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	margin: 0;
+main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
 }
 
-#user, #result, #hide-div-hr{
-	display: none; 
-}
-
-
-h1{
-	font-family: 'Fredoka', sans-serif;
-	font-weight: 700;
-	color: var(--color-title-button); 
-	text-align: center;
-}
-
-label{
-	font-family: 'Fira Sans', sans-serif;
-	font-size: 15px;
-	color: var(--color-text);
-}
-
-input{
-	width: 300px;
-	height: 38px;
-	margin-bottom: 35px;
-	padding: 15px;
-	border: 1px solid var(--color-input);
-	border-radius: 10px;
-}
-
-input:focus{
-	outline: none;
-	border: 2px solid var(--color-border-input);
-}
-
-input::placeholder{
-	color: var(--color-input-text);
-}
-
-input[type="text"], input[type="password"], 
-input[type="email"], input[type="number"]{
-	font-family: "Fira Sans", sans-serif;
-	font-size: 16px;
-	color:var(--color-text)
-}
-
-form{
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-
-.process-auth{
-	margin: 0 auto;
-	width: 430px;
-	height: 75%;
-	display: flex; 
-	flex-direction: column;
-	align-items: center;
-	background-color: var(--color-form-div);
-	border-radius: 20px;
-	box-shadow: 0px 0px 25px 8px rgba(0,0,0,0.25);
+#user,
+#result,
+#hide-div-hr {
+  display: none;
 }
 
 
-.verify-content{
-	height: 85%;
+h1 {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  color: var(--color-title-button);
+  text-align: center;
+}
+
+label {
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 15px;
+  color: var(--color-text);
+}
+
+input {
+  width: 300px;
+  height: 38px;
+  margin-bottom: 35px;
+  padding: 15px;
+  border: 1px solid var(--color-input);
+  border-radius: 10px;
+}
+
+input:focus {
+  outline: none;
+  border: 2px solid var(--color-border-input);
+}
+
+input::placeholder {
+  color: var(--color-input-text);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"] {
+  font-family: "Fira Sans", sans-serif;
+  font-size: 16px;
+  color: var(--color-text)
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.process-auth {
+  margin: 0 auto;
+  width: 430px;
+  height: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-form-div);
+  border-radius: 20px;
+  box-shadow: 0px 0px 25px 8px rgba(0, 0, 0, 0.25);
 }
 
 
-.login-title{
-	font-size: 90px;
-	margin-top: 45px;
-	margin-bottom: 20px;
-}
-
-.verify-title{
-	font-size: 45px;
-	margin-top: 45px;
-	margin-bottom: 45px;
-}
-
-.inputs-form{
-	display: flex;
-	flex-direction: column; 
-}
-
-.code-verify{
-	margin-top:35px
-}
-
-.inputs-form label{
-	font-size: 16px;
-}
-
-.btn-verify, .btn-login{
-	width: 250px;
-	height: 50px;
-	background-color: var(--color-title-button);
-	border: none;
-	border-radius: 10px;
-	color: var(--color-button-text);
-	font-size: 20px;
-	font-family: 'Fira Sans', sans-serif;
-}
-
-.auth-buttons{
-	height: 35%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-
-.qr-button, .continue-button{
-	width: 300px;
-	height: 175px;
-	background-color: var(--color-title-button);
-	border: none;
-	border-radius: 10px;
-	color: var(--color-button-text);
-	font-size: 20px;
-	font-family: 'Fira Sans', sans-serif;
-	margin-bottom:15px;
-}
-
-.process-auth .header-login{
-	display: flex;
-	flex-direction: row;
-}
-
-.header-login img{
-	width: 21px;
-	height: 21px;
-	align-self: flex-end;
-    margin-bottom: 35px;
-}
-
-.info-home{
-	display: flex;
-	justify-content: center;
-	text-align: center;
-	height: 400px;
-}
-
-.info-home h1{
-	font-size : 38px;
+.verify-content {
+  height: 85%;
 }
 
 
+.login-title {
+  font-size: 90px;
+  margin-top: 45px;
+  margin-bottom: 20px;
+}
 
+.verify-title {
+  font-size: 45px;
+  margin-top: 45px;
+  margin-bottom: 45px;
+}
+
+.inputs-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.code-verify {
+  margin-top: 35px
+}
+
+.inputs-form label {
+  font-size: 16px;
+}
+
+.btn-verify,
+.btn-login {
+  width: 250px;
+  height: 50px;
+  background-color: var(--color-title-button);
+  border: none;
+  border-radius: 10px;
+  color: var(--color-button-text);
+  font-size: 20px;
+  cursor: pointer;
+  font-family: 'Fira Sans', sans-serif;
+}
+
+.auth-buttons {
+  height: 35%;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  align-items: center;
+}
+
+.qr-button,
+.continue-button {
+  width: 300px;
+  height: 175px;
+  background-color: var(--color-title-button);
+  border: none;
+  border-radius: 10px;
+  color: var(--color-button-text);
+  font-size: 20px;
+  font-family: 'Fira Sans', sans-serif;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.process-auth .header-login {
+  display: flex;
+  flex-direction: row;
+}
+
+.header-login img {
+  width: 21px;
+  height: 21px;
+  align-self: flex-end;
+  margin-bottom: 35px;
+}
+
+.info-home {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  height: 400px;
+}
+
+.info-home h1 {
+  font-size: 38px;
+}
+
+.home-title {
+  margin-bottom: 20px;
+}

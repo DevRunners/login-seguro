@@ -5,6 +5,7 @@ const {
   getUser,
   addNewUser,
   updateUser,
+  changeSession
 } = require('../models/userModel')
 
 async function addUser(req, res) {
@@ -14,7 +15,7 @@ async function addUser(req, res) {
   const hashedPassword = await bcrypt.hash(password, saltRounds)
   try {
     const temp_secret = speakeasy.generateSecret()
-    await addNewUser(username, { id, temp_secret, username, password: hashedPassword, session: false})
+    await addNewUser(username, { id, temp_secret, username, password: hashedPassword, session: false })
 
     res.status(200).json({ message: `Usuario ${username} registrado con éxito` })
   } catch (err) {
@@ -88,7 +89,7 @@ async function isVerified(req, res) {
 
     res.status(200).json({ verified: Boolean(user.secret) })
   } catch (err) {
-    res.status(500).json({ message: "Usuario no encontrado"})
+    res.status(500).json({ message: "Usuario no encontrado" })
   }
 }
 
@@ -108,7 +109,7 @@ async function qrUrl(req, res) {
   }
 }
 
-async function changeSession(req, res) {
+async function changeUserSession(req, res) {
   const { username } = req.body
 
   try {
@@ -118,7 +119,7 @@ async function changeSession(req, res) {
       throw new Error('User is not registered')
     }
 
-    const updatedUser = await updateUser(username, { ...user, session: !user.session })
+    await changeSession(username, !user.session)
 
     res.status(200).json({ message: `Sesión de usuario ${username} actualizada` })
   } catch (err) {
@@ -132,5 +133,5 @@ module.exports = {
   validateToken,
   isVerified,
   qrUrl,
-  changeSession
+  changeUserSession
 }

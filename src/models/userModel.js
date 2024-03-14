@@ -62,7 +62,7 @@ async function changeSession(username, session) {
     throw new Error('User is not registered')
   }
 
-  const index = db.getIndex('/users', username, 'username')
+  const index = await db.getIndex('/users', username, 'username')
   db.push('/users[' + index + ']', { session }, false)
 }
 

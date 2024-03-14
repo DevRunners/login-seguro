@@ -1,14 +1,16 @@
 bufferFrom = ethereumjs.Buffer.Buffer.from
 
-let importedPublicKey
+async function fetchPublicKey() {
+  return await fetch('/api/publicKey')
+    .then(response => response.json())
+    .then(async jsonData => {
+      const { publicKey } = jsonData
+      let importedPublicKey = await importPublicCrytoKey(publicKey)
+      return importedPublicKey
+    })
+    .catch(err => console.error(err))
+}
 
-fetch('/api/publicKey')
-  .then(response => response.json())
-  .then(async jsonData => {
-    const { publicKey } = jsonData
-    importedPublicKey = await importPublicCrytoKey(publicKey)
-  })
-  .catch(err => console.error(err))
 
 async function importPublicCrytoKey(publicKey) {
   const publicKeyBase64String = bufferFrom(publicKey).toString('ascii');
@@ -52,6 +54,8 @@ function resetForm() {
 
 async function handleSubmit(evt, token) {
   evt.preventDefault()
+
+  const importedPublicKey = await fetchPublicKey()
 
   const username = document.getElementById('username').value
   const password = document.getElementById('password').value
@@ -103,12 +107,13 @@ function verifyUser(data) {
 
       if (message === 'verified') {
         resetForm()
+        alert('User has been verified')
         window.location.href = `/verification.html?username=${username}`
       } else {
         window.location.reload()
       }
     })
-    .catch(error => showResultUserVerify(error))
+    .catch(error => console.log("User verification failed"))
 }
 
 grecaptcha.ready(() => {

@@ -4,7 +4,7 @@ const { addUser,
   validateToken,
   isVerified,
   qrUrl,
-  changeSession
+  changeUserSession
 } = require('../controllers/mfaController')
 
 const router = express.Router()
@@ -14,6 +14,6 @@ router.post('/verifyToken', verifyToken)
 router.post('/validateToken', validateToken)
 router.post('/isVerified', isVerified)
 router.post('/qrUrl', qrUrl)
-router.post('/changeSession', changeSession)
+router.post('/changeSession', changeUserSession)
 
 module.exports = router
