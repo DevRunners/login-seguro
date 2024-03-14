@@ -1,3 +1,43 @@
+bufferFrom = ethereumjs.Buffer.Buffer.from
+
+let importedPublicKey
+
+fetch('/api/publicKey')
+  .then(response => response.json())
+  .then(async jsonData => {
+    const { publicKey } = jsonData
+    importedPublicKey = await importPublicCrytoKey(publicKey)
+  })
+  .catch(err => console.error(err))
+
+async function importPublicCrytoKey(publicKey) {
+  const publicKeyBase64String = bufferFrom(publicKey).toString('ascii');
+  const publicKeyBuffer = bufferFrom(publicKeyBase64String, 'base64');
+  const publicCryptoKey = await crypto.subtle.importKey(
+    'spki',
+    publicKeyBuffer,
+    { name: 'RSA-OAEP', hash: "SHA-512" },
+    false,
+    ["encrypt"]
+  )
+  return publicCryptoKey
+}
+
+async function encryptPassowrd(publicCryptoKey, password) {
+  try {
+    const plainTextUInt8 = (new TextEncoder()).encode(password);
+    const cypherTextBuffer = await crypto.subtle.encrypt(
+      { name: "RSA-OAEP", hash: "SHA-512" },
+      publicCryptoKey,
+      plainTextUInt8
+    )
+    const cypherTextBase64 = bufferFrom(cypherTextBuffer).toString('base64');
+    return cypherTextBase64
+  } catch (error) {
+    return null
+  }
+}
+
 function showResultReCaptcha(text) {
   document.getElementById('result').innerHTML = text
 }
@@ -10,12 +50,19 @@ function resetForm() {
   document.getElementById('loginForm').reset()
 }
 
-function handleSubmit(evt, token) {
+async function handleSubmit(evt, token) {
   evt.preventDefault()
 
   const username = document.getElementById('username').value
   const password = document.getElementById('password').value
-  const data = { username, password, token }
+  const passwordEncrypted = await encryptPassowrd(importedPublicKey, password)
+
+  if (passwordEncrypted === null) {
+    console.error('Failed to encrypt password')
+    return
+  }
+
+  const data = { username, password: passwordEncrypted, token }
 
   fetch('/api/send', {
     headers: {
@@ -58,7 +105,6 @@ function verifyUser(data) {
         resetForm()
         window.location.href = `/verification.html?username=${username}`
       } else {
-        alert('User not verified')
         window.location.reload()
       }
     })

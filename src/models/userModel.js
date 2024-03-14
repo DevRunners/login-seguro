@@ -1,7 +1,7 @@
 const db = require('../../database/config')
 
-const unverifiedUserProps = new Set(['id', 'username', 'password', 'temp_secret'])
-const verifiedUserProps = new Set(['id', 'username', 'password', 'secret'])
+const unverifiedUserProps = new Set(['id', 'username', 'password', 'temp_secret', 'session'])
+const verifiedUserProps = new Set(['id', 'username', 'password', 'secret', 'session'])
 
 async function getUser(username) {
   try {
@@ -56,8 +56,19 @@ function filterProperties(data, whitelistedProps) {
   return userData
 }
 
+async function changeSession(username, session) {
+  const alreadyRegistered = await existsUser(username)
+  if (!alreadyRegistered) {
+    throw new Error('User is not registered')
+  }
+
+  const index = db.getIndex('/users', username, 'username')
+  db.push('/users[' + index + ']', { session }, false)
+}
+
 module.exports = {
   getUser,
   addNewUser,
   updateUser,
+  changeSession
 }

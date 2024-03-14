@@ -1,5 +1,6 @@
 const uuid = require('uuid')
 const speakeasy = require('speakeasy')
+const bcrypt = require('bcrypt')
 const {
   getUser,
   addNewUser,
@@ -9,13 +10,15 @@ const {
 async function addUser(req, res) {
   const id = uuid.v4()
   const { username, password } = req.body
-
+  const saltRounds = 10
+  const hashedPassword = await bcrypt.hash(password, saltRounds)
   try {
     const temp_secret = speakeasy.generateSecret()
-    await addNewUser(username, { id, temp_secret, username, password })
-    res.json({ id, secret: temp_secret.base32, username, password })
+    await addNewUser(username, { id, temp_secret, username, password: hashedPassword, session: false})
+
+    res.status(200).json({ message: `Usuario ${username} registrado con éxito` })
   } catch (err) {
-    res.status(500).json({ message: err.message })
+    res.status(500).json({ message: 'El usuario no se ha podido registrar' })
   }
 }
 
@@ -44,9 +47,9 @@ async function verifyToken(req, res) {
       updateUser(username, { ...user, secret: user.temp_secret })
     }
 
-    res.json({ verified })
+    res.status(200).json({ verified })
   } catch (err) {
-    res.status(500).json({ message: err.message })
+    res.status(500).json({ message: "Falló la verificación del token" })
   }
 }
 
@@ -71,9 +74,9 @@ async function validateToken(req, res) {
       token,
     })
 
-    res.json({ verified })
+    res.status(200).json({ verified })
   } catch (err) {
-    res.status(500).json({ message: err.message })
+    res.status(500).json({ message: "Fallo la validación del token" })
   }
 }
 
@@ -83,13 +86,9 @@ async function isVerified(req, res) {
   try {
     const user = await getUser(username)
 
-    if (!user) {
-      throw new Error('User is not registered')
-    }
-
-    res.json({ verified: Boolean(user.secret) })
+    res.status(200).json({ verified: Boolean(user.secret) })
   } catch (err) {
-    res.status(500).json({ message: err.message })
+    res.status(500).json({ message: "Usuario no encontrado"})
   }
 }
 
@@ -99,17 +98,31 @@ async function qrUrl(req, res) {
   try {
     const user = await getUser(username)
 
-    if (!user) {
-      throw new Error('User is not registered')
-    }
-
     if (!user.temp_secret) {
       throw new Error('User has already been verified')
     }
 
-    res.json({ qrUrl: user.temp_secret.otpauth_url })
+    res.status(200).json({ qrUrl: user.temp_secret.otpauth_url })
   } catch (err) {
-    res.status(500).json({ message: err.message })
+    res.status(500).json({ message: "Usuario no encontrado" })
+  }
+}
+
+async function changeSession(req, res) {
+  const { username } = req.body
+
+  try {
+    const user = await getUser(username)
+
+    if (!user) {
+      throw new Error('User is not registered')
+    }
+
+    const updatedUser = await updateUser(username, { ...user, session: !user.session })
+
+    res.status(200).json({ message: `Sesión de usuario ${username} actualizada` })
+  } catch (err) {
+    res.status(500).json({ message: "Usuario no encontrado" })
   }
 }
 
@@ -119,4 +132,5 @@ module.exports = {
   validateToken,
   isVerified,
   qrUrl,
+  changeSession
 }

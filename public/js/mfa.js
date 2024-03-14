@@ -1,9 +1,7 @@
 main()
 
 async function main() {
-  const isVerified = await isUserVerified();
-
-  console.log(isVerified)
+  const isVerified = await isUserVerified()
 
   const otpForm = document.getElementById('otpForm')
   const unverifiedButtons = document.getElementById('unverifiedButtons')
@@ -39,7 +37,7 @@ async function isUserVerified() {
 
     return verified
   } catch (err) {
-    console.log(err)
+    console.log("Failed to verify user")
   }
 }
 
@@ -60,7 +58,7 @@ async function getQrCodeUrl() {
 
     return qrUrl
   } catch (err) {
-    console.log(err)
+    console.log("Failed to get QR code URL")
   }
 }
 
@@ -78,7 +76,7 @@ async function OTPValidation(url, data) {
 
     return verified
   } catch (err) {
-    console.log(err)
+    console.log("Failed to validate token")
   }
 }
 
@@ -100,7 +98,7 @@ async function handleSubmit(evt, url) {
       resultText.innerText = 'Invalid token. Try again.'
     }
   } catch (err) {
-    console.log(err)
+    console.log("Failed to validate token")
   }
 }
 
@@ -124,5 +122,15 @@ async function displayQRCode() {
 }
 
 function success() {
-  window.location.href = '/home.html'
+  const urlParams = new URLSearchParams(window.location.search)
+  const username = urlParams.get('username')
+  fetch('/api/changeSession', {
+    method: 'post',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ username })
+  })
+  window.location.href = '/home.html?username=' + username
 }
