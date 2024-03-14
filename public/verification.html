@@ -10,25 +10,29 @@
 </head>
 
 <body>
-  <h1 class="principal-title verification-title">Doble factor de autenticación</h1>
-  <div id="qrcode" class="qr-code" style="display: none;"></div>
+  <main>
+    <div class="process-auth">
+      <h1 class="principal-title verification-title">Doble factor de autenticación</h1>
+      <div id="qrcode" class="qr-code" style="display: none;"></div>
 
-  <div id="unverifiedButtons" style="display: none;">
-    <button id="showQR">Vincular aplicación de autenticación (Recomendado)</button>
-    <button id="continue">Continuar</button>
-  </div>
-
-  <div class="form-auth">
-    <form id="otpForm">
-      <div class="inputs-form">
-        <label for="otp">Introduzca su código</label> <br>
-        <input type="number" id="otp" required />
+      <div id="unverifiedButtons" style="display: none;">
+        <button id="showQR">Vincular aplicación de autenticación (Recomendado)</button>
+        <button id="continue">Continuar</button>
       </div>
-      <button type="submit" id="verifyOTP">Verificar</button>
-    </form>
-  </div>
 
-  <span id="result"></span>
+      <div class="form-auth">
+        <form class="login" id="otpForm">
+          <div class="inputs-form">
+            <label for="otp">Introduzca su código</label> <br>
+            <input type="number" id="otp" required />
+          </div>
+          <button type="submit" id="verifyOTP">Verificar</button>
+        </form>
+      </div>
+      <span id="result"></span>
+    </div>
+    
+  </main>
   <script src="./js/mfa.js"></script>
 </body>
 

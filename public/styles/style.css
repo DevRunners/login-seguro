@@ -2,7 +2,9 @@
 	--color-body: #FFB3C1;
 	--color-title-button: #A4133C;
 	--color-text: #590D22;
-	--color-input:  #590D2280;
+	--color-input: #494C4F80;
+	--color-border-input: #A4133C;
+	--color-input-text:  #590D2280;
 	--color-button-text: #F2F8FF;
 	--color-form-div: #FFFFF9; 
 }
@@ -21,18 +23,30 @@
 	font-style: normal;
 }
 
-*{
-	margin:0;
-	padding: 0;
+body{
+	background-color: #FFB3C1;
+	width: 100%;
+	height: 100vh; 
+	
 }
 
-body{
-	background-color: #FFB3C1;     
+main{
+	width: 100%;
+	height:100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
 }
+
+#user, #result, #hide-div-hr{
+	display: none; 
+}
+
 
 h1{
 	font-family: 'Fredoka', sans-serif;
-	font-size: 2.5em;
 	font-weight: 700;
 	color: var(--color-title-button); 
 }
@@ -41,16 +55,95 @@ label{
 	font-family: 'Fira Sans', sans-serif;
 	font-size: 15px;
 	color: var(--color-text);
+	margin: 0;
 }
 
-form{
+input{
+	width: 300px;
+	height: 38px;
+	margin-bottom: 35px;
+	padding: 15px;
+	border: 1px solid var(--color-input);
+	border-radius: 10px;
+}
+
+input:focus{
+	outline: none;
+	border: 2px solid var(--color-border-input);
+}
+
+input::placeholder{
+	color: var(--color-input-text);
+}
+
+input[type="text"], input[type="password"], 
+input[type="email"], input[type="number"]{
+	font-family: "Fira Sans", sans-serif;
+	font-size: 16px;
+	color:var(--color-text)
+}
+
+.process-auth form{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+}
+
+.process-auth{
 	margin: 0 auto;
-	width: 550px;
+	width: 430px;
+	height: 75%;
 	display: flex; 
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
 	background-color: var(--color-form-div);
+	border-radius: 20px;
+	box-shadow: 0px 0px 25px 8px rgba(0,0,0,0.25);
 }
+
+.login-title{
+	font-size: 90px;
+	margin-top: 45px;
+	margin-bottom: 20px;
+}
+
+.inputs-form{
+	display: flex;
+	flex-direction: column; 
+}
+
+.inputs-form label{
+	font-size: 16px;
+}
+
+.process-auth .btn-login{
+	width: 250px;
+	height: 50px;
+	background-color: var(--color-title-button);
+	border: none;
+	border-radius: 10px;
+	color: var(--color-button-text);
+	font-size: 20px;
+	font-family: 'Fira Sans', sans-serif;
+	margin: auto;
+}
+
+.process-auth .header-login{
+	display: flex;
+	flex-direction: row;
+}
+
+.header-login img{
+	width: 21px;
+	height: 21px;
+	align-self: flex-end;
+    margin-bottom: 35px;
+}
+
+.info-home{
+	text-align: center;
+}
+
 
 
