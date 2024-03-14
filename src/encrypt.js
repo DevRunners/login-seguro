@@ -26,7 +26,6 @@ async function setEnvVariables() {
   const { expPublicKeyBase64, expPrivateKeyBase64 } = await generateRSAKeyPair()
   process.env.PUBLIC_KEY = expPublicKeyBase64
   process.env.PRIVATE_KEY = expPrivateKeyBase64
-  console.log(process.env.PUBLIC_KEY, process.env.PRIVATE_KEY)
 }
 
 async function importPrivateDecryptKey() {

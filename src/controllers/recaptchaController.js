@@ -20,10 +20,7 @@ async function handleSend(req, res) {
 async function verifyUser(req, res) {
   const { username, password } = req.body
 
-  console.log(password)
-
   let plainTextPassword = await decryptedPassword(password)
-  console.log(plainTextPassword)
 
   try {
     const user = await getUser(username)

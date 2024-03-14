@@ -14,6 +14,6 @@ btnLogOut.addEventListener('click', async () => {
     })
     window.location.href = '/index.html'
   } catch (err) {
-    console.log(err)
+    console.log("Failed to change session")
   }
 })

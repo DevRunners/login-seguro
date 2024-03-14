@@ -12,7 +12,6 @@ fetch('/api/publicKey')
 
 async function importPublicCrytoKey(publicKey) {
   const publicKeyBase64String = bufferFrom(publicKey).toString('ascii');
-  console.log(publicKeyBase64String)
   const publicKeyBuffer = bufferFrom(publicKeyBase64String, 'base64');
   const publicCryptoKey = await crypto.subtle.importKey(
     'spki',
@@ -33,7 +32,6 @@ async function encryptPassowrd(publicCryptoKey, password) {
       plainTextUInt8
     )
     const cypherTextBase64 = bufferFrom(cypherTextBuffer).toString('base64');
-    console.log(cypherTextBase64)
     return cypherTextBase64
   } catch (error) {
     return null
@@ -60,7 +58,7 @@ async function handleSubmit(evt, token) {
   const passwordEncrypted = await encryptPassowrd(importedPublicKey, password)
 
   if (passwordEncrypted === null) {
-    alert('Error encrypting password')
+    console.error('Failed to encrypt password')
     return
   }
 
@@ -105,10 +103,8 @@ function verifyUser(data) {
 
       if (message === 'verified') {
         resetForm()
-        alert('User verified')
         window.location.href = `/verification.html?username=${username}`
       } else {
-        alert('User not verified')
         window.location.reload()
       }
     })

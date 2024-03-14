@@ -37,7 +37,7 @@ async function isUserVerified() {
 
     return verified
   } catch (err) {
-    console.log(err)
+    console.log("Failed to verify user")
   }
 }
 
@@ -58,7 +58,7 @@ async function getQrCodeUrl() {
 
     return qrUrl
   } catch (err) {
-    console.log(err)
+    console.log("Failed to get QR code URL")
   }
 }
 
@@ -76,7 +76,7 @@ async function OTPValidation(url, data) {
 
     return verified
   } catch (err) {
-    console.log(err)
+    console.log("Failed to validate token")
   }
 }
 
@@ -98,7 +98,7 @@ async function handleSubmit(evt, url) {
       resultText.innerText = 'Invalid token. Try again.'
     }
   } catch (err) {
-    console.log(err)
+    console.log("Failed to validate token")
   }
 }
 
