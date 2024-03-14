@@ -49,13 +49,13 @@ h1{
 	font-family: 'Fredoka', sans-serif;
 	font-weight: 700;
 	color: var(--color-title-button); 
+	text-align: center;
 }
 
 label{
 	font-family: 'Fira Sans', sans-serif;
 	font-size: 15px;
 	color: var(--color-text);
-	margin: 0;
 }
 
 input{
@@ -83,11 +83,10 @@ input[type="email"], input[type="number"]{
 	color:var(--color-text)
 }
 
-.process-auth form{
+form{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-
 }
 
 .process-auth{
@@ -102,10 +101,22 @@ input[type="email"], input[type="number"]{
 	box-shadow: 0px 0px 25px 8px rgba(0,0,0,0.25);
 }
 
+
+.verify-content{
+	height: 85%;
+}
+
+
 .login-title{
 	font-size: 90px;
 	margin-top: 45px;
 	margin-bottom: 20px;
+}
+
+.verify-title{
+	font-size: 45px;
+	margin-top: 45px;
+	margin-bottom: 45px;
 }
 
 .inputs-form{
@@ -113,11 +124,15 @@ input[type="email"], input[type="number"]{
 	flex-direction: column; 
 }
 
+.code-verify{
+	margin-top:35px
+}
+
 .inputs-form label{
 	font-size: 16px;
 }
 
-.process-auth .btn-login{
+.btn-verify, .btn-login{
 	width: 250px;
 	height: 50px;
 	background-color: var(--color-title-button);
@@ -126,7 +141,25 @@ input[type="email"], input[type="number"]{
 	color: var(--color-button-text);
 	font-size: 20px;
 	font-family: 'Fira Sans', sans-serif;
-	margin: auto;
+}
+
+.auth-buttons{
+	height: 35%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.qr-button, .continue-button{
+	width: 300px;
+	height: 175px;
+	background-color: var(--color-title-button);
+	border: none;
+	border-radius: 10px;
+	color: var(--color-button-text);
+	font-size: 20px;
+	font-family: 'Fira Sans', sans-serif;
+	margin-bottom:15px;
 }
 
 .process-auth .header-login{
@@ -142,7 +175,14 @@ input[type="email"], input[type="number"]{
 }
 
 .info-home{
+	display: flex;
+	justify-content: center;
 	text-align: center;
+	height: 400px;
+}
+
+.info-home h1{
+	font-size : 38px;
 }
 
 

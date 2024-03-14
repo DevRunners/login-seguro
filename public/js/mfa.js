@@ -111,7 +111,7 @@ async function displayQRCode() {
   qr.style.display = 'block'
   showQRCodeButton.style.display = 'none'
   continueButton.style.display = 'none'
-  otpForm.style.display = 'block'
+  otpForm.style.display = 'flex'
 
   const qrURL = await getQrCodeUrl()
 
