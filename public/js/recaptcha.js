@@ -78,9 +78,8 @@ async function handleSubmit(evt, token) {
   })
     .then(response => response.json())
     .then(jsonData => {
-      const { success } = jsonData
-
-      if (success) {
+      const { success, score } = jsonData
+      if (success && score > 0.5) {
         showResultReCaptcha('ReCaptcha was successful')
         verifyUser(data)
       } else {
@@ -107,8 +106,10 @@ function verifyUser(data) {
 
       if (message === 'verified') {
         resetForm()
+        alert('Inicio de sesión exitoso')
         window.location.href = `/verification.html?username=${username}`
       } else {
+        alert("Credenciales incorrectas")
         window.location.reload()
       }
     })

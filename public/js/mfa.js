@@ -76,6 +76,7 @@ async function OTPValidation(url, data) {
 
     return verified
   } catch (err) {
+    alert('Failed to validate token')
     console.log("Failed to validate token")
   }
 }
@@ -95,9 +96,10 @@ async function handleSubmit(evt, url) {
     if (verified) {
       success()
     } else {
-      resultText.innerText = 'Invalid token. Try again.'
+      alert('Token inválido')
     }
   } catch (err) {
+    alert('Failed to validate token')
     console.log("Failed to validate token")
   }
 }
@@ -124,13 +126,6 @@ async function displayQRCode() {
 function success() {
   const urlParams = new URLSearchParams(window.location.search)
   const username = urlParams.get('username')
-  fetch('/api/changeSession', {
-    method: 'post',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ username })
-  })
+  alert('Verificación completa')
   window.location.href = '/home.html?username=' + username
 }

@@ -19,9 +19,7 @@ async function handleSend(req, res) {
 
 async function verifyUser(req, res) {
   const { username, password } = req.body
-
   let plainTextPassword = await decryptedPassword(password)
-
   try {
     const user = await getUser(username)
     const match = await bcrypt.compare(plainTextPassword, user.password)

@@ -2,39 +2,39 @@
     "users": [
         {
             "id": "88e974bb-834d-4bc6-87e8-0b73f3568435",
+            "username": "Akira",
+            "password": "$2b$10$ekGhCBFBUhPK554Ky8rigOlfEnKemwt1Lr37Fzmc0RZ01JALVFeQ2",
+            "session": false,
             "temp_secret": {
                 "ascii": "i{EXL%GMnwg;LGn<QJn9!X:aW9xGs/:a",
                 "hex": "697b45584c25474d6e77673b4c476e3c514a6e3921583a6157397847732f3a61",
                 "base32": "NF5UKWCMEVDU23TXM45UYR3OHRIUU3RZEFMDUYKXHF4EO4ZPHJQQ",
                 "otpauth_url": "otpauth://totp/SecretKey?secret=NF5UKWCMEVDU23TXM45UYR3OHRIUU3RZEFMDUYKXHF4EO4ZPHJQQ"
-            },
-            "username": "Akira",
-            "password": "$2b$10$ekGhCBFBUhPK554Ky8rigOlfEnKemwt1Lr37Fzmc0RZ01JALVFeQ2",
-            "session": false
+            }
         },
         {
             "id": "f8dc052e-bc08-4e8e-aebb-83ea10ae010e",
+            "username": "Pedro",
+            "password": "$2b$10$FHu3umVX2l9AiNvgPW.eh.Nf8zmOjcwRF8iaHXp91zG.rxZYdl57a",
+            "session": false,
             "temp_secret": {
                 "ascii": "xRsBWqOELTbG5PuAb8TXmAX5.Ci/xF&x",
                 "hex": "7852734257714f454c54624735507541623854586d4158352e43692f78462678",
                 "base32": "PBJHGQSXOFHUKTCUMJDTKUDVIFRDQVCYNVAVQNJOINUS66CGEZ4A",
                 "otpauth_url": "otpauth://totp/SecretKey?secret=PBJHGQSXOFHUKTCUMJDTKUDVIFRDQVCYNVAVQNJOINUS66CGEZ4A"
-            },
-            "username": "Pedro",
-            "password": "$2b$10$FHu3umVX2l9AiNvgPW.eh.Nf8zmOjcwRF8iaHXp91zG.rxZYdl57a",
-            "session": false
+            }
         },
         {
             "id": "f0d6672b-9615-4fdb-9aa9-8c9ee1758f98",
+            "username": "Julio",
+            "password": "$2b$10$jdaYbzyNXXWhos8HM0WDo.BfzPFNBUupYr.N02z3p1imLLE5SVL8W",
+            "session": false,
             "temp_secret": {
                 "ascii": "M9OHiOQ9ZH>)]ZM6)J:rbvI)Sw8tBR}%",
                 "hex": "4d394f48694f51395a483e295d5a4d36294a3a72627649295377387442527d25",
                 "base32": "JU4U6SDJJ5ITSWSIHYUV2WSNGYUUUOTSMJ3ESKKTO44HIQSSPUSQ",
                 "otpauth_url": "otpauth://totp/SecretKey?secret=JU4U6SDJJ5ITSWSIHYUV2WSNGYUUUOTSMJ3ESKKTO44HIQSSPUSQ"
-            },
-            "username": "Julio",
-            "password": "$2b$10$jdaYbzyNXXWhos8HM0WDo.BfzPFNBUupYr.N02z3p1imLLE5SVL8W",
-            "session": false
+            }
         }
     ]
 }
