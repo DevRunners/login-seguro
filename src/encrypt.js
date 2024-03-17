@@ -43,13 +43,6 @@ async function importPrivateDecryptKey() {
 
 async function decryptedPassword(password) {
   const privateKey = await importPrivateDecryptKey()
-
-  // const cypherTxtBase64Buffer = fs.readFileSync('./cypherText.txt');
-  // const cypherTxtBase64String = Buffer.from(cypherTxtBase64Buffer).toString('ascii');
-  // const cypherTxtBuffer = Buffer.from(cypherTxtBase64String, 'base64');
-  // const plainTxtBuff = await crypto.subtle.decrypt('RSA-OAEP', privateCryptoKey, cypherTxtBuffer);
-  // const plainTxt = Buffer.from(plainTxtBuff).toString('ascii');
-
   const passwordBase64String = Buffer.from(password).toString('ascii');
   const passwordBuffer = Buffer.from(passwordBase64String, 'base64');
   const passwordBuff = await crypto.subtle.decrypt('RSA-OAEP', privateKey, passwordBuffer);
