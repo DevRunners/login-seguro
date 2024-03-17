@@ -1,25 +1,31 @@
-main()
+main() // Llama a la función principal al cargar la página
 
+// Función principal
 async function main() {
+  // Verifica si el usuario está verificado
   const isVerified = await isUserVerified()
 
+  // Elementos del DOM
   const otpForm = document.getElementById('otpForm')
   const unverifiedButtons = document.getElementById('unverifiedButtons')
   const showQRCodeButton = document.getElementById('showQR')
   const continueButton = document.getElementById('continue')
 
+  // Agrega event listeners a los botones
   showQRCodeButton.addEventListener('click', displayQRCode)
   continueButton.addEventListener('click', success)
 
+  // Oculta el formulario de OTP y muestra los botones de no verificado si el usuario no está verificado
   if (!isVerified) {
     otpForm.style.display = 'none'
     unverifiedButtons.style.display = 'block'
-    otpForm.addEventListener('submit', evt => handleSubmit(evt, '/api/verifyToken'))
+    otpForm.addEventListener('submit', evt => handleSubmit(evt, '/api/verifyToken')) // Maneja el envío del formulario para la verificación del token
   } else {
-    otpForm.addEventListener('submit', evt => handleSubmit(evt, '/api/validateToken'))
+    otpForm.addEventListener('submit', evt => handleSubmit(evt, '/api/validateToken')) // Maneja el envío del formulario para la validación del token
   }
 }
 
+// Función para verificar si el usuario está verificado
 async function isUserVerified() {
   const urlParams = new URLSearchParams(window.location.search)
   const username = urlParams.get('username')
@@ -41,6 +47,7 @@ async function isUserVerified() {
   }
 }
 
+// Función para obtener la URL del código QR
 async function getQrCodeUrl() {
   const urlParams = new URLSearchParams(window.location.search)
   const username = urlParams.get('username')
@@ -62,6 +69,7 @@ async function getQrCodeUrl() {
   }
 }
 
+// Función para validar el OTP
 async function OTPValidation(url, data) {
   try {
     const response = await fetch(url, {
@@ -81,6 +89,7 @@ async function OTPValidation(url, data) {
   }
 }
 
+// Función para manejar el envío del formulario
 async function handleSubmit(evt, url) {
   evt.preventDefault()
 
@@ -104,6 +113,7 @@ async function handleSubmit(evt, url) {
   }
 }
 
+// Función para mostrar el código QR
 async function displayQRCode() {
   const qr = document.getElementById('qrcode')
   const showQRCodeButton = document.getElementById('showQR')
@@ -123,6 +133,7 @@ async function displayQRCode() {
   qr.append(img)
 }
 
+// Función para el manejo de éxito
 function success() {
   const urlParams = new URLSearchParams(window.location.search)
   const username = urlParams.get('username')

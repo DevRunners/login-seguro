@@ -1,5 +1,7 @@
+// Importa la función bufferFrom de ethereumjs.Buffer.Buffer para crear un buffer desde una cadena
 bufferFrom = ethereumjs.Buffer.Buffer.from
 
+// Función asíncrona para obtener la clave pública del servidor
 async function fetchPublicKey() {
   return await fetch('/api/publicKey')
     .then(response => response.json())
@@ -11,10 +13,10 @@ async function fetchPublicKey() {
     .catch(err => console.error(err))
 }
 
-
+// Función asíncrona para importar la clave pública criptográfica
 async function importPublicCrytoKey(publicKey) {
-  const publicKeyBase64String = bufferFrom(publicKey).toString('ascii');
-  const publicKeyBuffer = bufferFrom(publicKeyBase64String, 'base64');
+  const publicKeyBase64String = bufferFrom(publicKey).toString('ascii')
+  const publicKeyBuffer = bufferFrom(publicKeyBase64String, 'base64')
   const publicCryptoKey = await crypto.subtle.importKey(
     'spki',
     publicKeyBuffer,
@@ -25,33 +27,38 @@ async function importPublicCrytoKey(publicKey) {
   return publicCryptoKey
 }
 
+// Función asíncrona para encriptar una contraseña con la clave pública
 async function encryptPassowrd(publicCryptoKey, password) {
   try {
-    const plainTextUInt8 = (new TextEncoder()).encode(password);
+    const plainTextUInt8 = (new TextEncoder()).encode(password)
     const cypherTextBuffer = await crypto.subtle.encrypt(
       { name: "RSA-OAEP", hash: "SHA-512" },
       publicCryptoKey,
       plainTextUInt8
     )
-    const cypherTextBase64 = bufferFrom(cypherTextBuffer).toString('base64');
+    const cypherTextBase64 = bufferFrom(cypherTextBuffer).toString('base64')
     return cypherTextBase64
   } catch (error) {
     return null
   }
 }
 
+// Función para mostrar el resultado del captcha
 function showResultReCaptcha(text) {
   document.getElementById('result').innerHTML = text
 }
 
+// Función para mostrar el resultado de la verificación de usuario
 function showResultUserVerify(text) {
   document.getElementById('userVerify').innerHTML = text
 }
 
+// Función para resetear el formulario
 function resetForm() {
   document.getElementById('loginForm').reset()
 }
 
+// Función para manejar el envío del formulario
 async function handleSubmit(evt, token) {
   evt.preventDefault()
 
@@ -68,6 +75,7 @@ async function handleSubmit(evt, token) {
 
   const data = { username, password: passwordEncrypted, token }
 
+  // Envia la solicitud al servidor
   fetch('/api/send', {
     headers: {
       'Accept': 'application/json',
@@ -91,6 +99,7 @@ async function handleSubmit(evt, token) {
     .catch(err => showResultReCaptcha(err))
 }
 
+// Función para verificar al usuario
 function verifyUser(data) {
   fetch('/api/verifyUser', {
     method: 'post',
@@ -116,10 +125,12 @@ function verifyUser(data) {
     .catch(error => console.log("User verification failed"))
 }
 
+// Inicialización de reCaptcha
 grecaptcha.ready(() => {
   handleRecaptchaExecute()
 })
 
+// Función para ejecutar reCaptcha
 function handleRecaptchaExecute() {
   grecaptcha.execute('6LdUlJIpAAAAAAWndAig2IIRrjEt7MzGXmw4WPcp', { action: 'verifyUser' })
     .then(token => {

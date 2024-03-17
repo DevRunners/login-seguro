@@ -5,7 +5,7 @@
             "username": "Akira",
             "password": "$2b$10$ekGhCBFBUhPK554Ky8rigOlfEnKemwt1Lr37Fzmc0RZ01JALVFeQ2",
             "session": false,
-            "secret": {
+            "temp_secret": {
                 "ascii": "i{EXL%GMnwg;LGn<QJn9!X:aW9xGs/:a",
                 "hex": "697b45584c25474d6e77673b4c476e3c514a6e3921583a6157397847732f3a61",
                 "base32": "NF5UKWCMEVDU23TXM45UYR3OHRIUU3RZEFMDUYKXHF4EO4ZPHJQQ",
@@ -17,7 +17,7 @@
             "username": "Pedro",
             "password": "$2b$10$FHu3umVX2l9AiNvgPW.eh.Nf8zmOjcwRF8iaHXp91zG.rxZYdl57a",
             "session": false,
-            "secret": {
+            "temp_secret": {
                 "ascii": "xRsBWqOELTbG5PuAb8TXmAX5.Ci/xF&x",
                 "hex": "7852734257714f454c54624735507541623854586d4158352e43692f78462678",
                 "base32": "PBJHGQSXOFHUKTCUMJDTKUDVIFRDQVCYNVAVQNJOINUS66CGEZ4A",
